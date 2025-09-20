@@ -31,8 +31,8 @@ Pastikan Anda sudah menginstal **Docker** dan **Docker Compose**.
 
 1.  **Clone repository ini:**
     ```bash
-    git clone [https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git](https://github.com/NAMA_USER_ANDA/NAMA_REPO_ANDA.git)
-    cd NAMA_REPO_ANDA
+    git clone https://github.com/muhtegaralfikri/nestjs-react-auth-docker.git
+    cd nestjs-react-auth-docker
     ```
 
 2.  **Buat file environment**:
