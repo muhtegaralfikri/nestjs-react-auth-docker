@@ -27,16 +27,10 @@ function LoginPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let backendUrl = import.meta.env.VITE_API_BASE_URL;
-    if (!backendUrl || window.location.hostname.endsWith('.github.dev')) {
-    const currentUrl = new URL(window.location.href);
-    const portToUse = currentUrl.port === '80' ? '3001' : currentUrl.port;
-    backendUrl = `${currentUrl.protocol}//${currentUrl.hostname.replace(portToUse, '3001')}`;
-    }
     try {
-      await axios.post(`${backendUrl}/auth/login`, { username, password });
+      await axios.post('http://localhost:3001/auth/login', { username, password });
       alert('Login berhasil!');
-      navigate('/home', { state: { username: username } });
+      navigate('/home', { state: { username: username } }); 
     } catch (error) {
       alert('Login gagal: ' + (error.response?.data?.message || 'Server tidak merespon'));
     }

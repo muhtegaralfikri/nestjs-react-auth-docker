@@ -30,18 +30,12 @@ function RegisterPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let backendUrl = import.meta.env.VITE_API_BASE_URL;
-    if (!backendUrl || window.location.hostname.endsWith('.github.dev')) {
-    const currentUrl = new URL(window.location.href);
-    const portToUse = currentUrl.port === '80' ? '3001' : currentUrl.port;
-    backendUrl = `${currentUrl.protocol}//${currentUrl.hostname.replace(portToUse, '3001')}`;
-    }
     try {
-      await axios.post(`${backendUrl}/auth/login`, { username, password });
-      alert('Login berhasil!');
-      navigate('/home', { state: { username: username } });
+      await axios.post('http://localhost:3001/auth/register', { username, email, password });
+      alert('Registrasi berhasil! Silakan login.');
+      navigate('/login');
     } catch (error) {
-      alert('Login gagal: ' + (error.response?.data?.message || 'Server tidak merespon'));
+      alert('Registrasi gagal: ' + (error.response?.data?.message || 'Server tidak merespon'));
     }
   };
 
