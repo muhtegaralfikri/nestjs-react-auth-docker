@@ -27,11 +27,11 @@ function RegisterPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+  const API_URL = import.meta.env.VITE_API_URL;
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/auth/register', { username, email, password });
+      await axios.post(`${API_URL}/auth/register`, { username, email, password });
       alert('Registrasi berhasil! Silakan login.');
       navigate('/login');
     } catch (error) {

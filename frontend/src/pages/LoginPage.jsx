@@ -24,11 +24,12 @@ function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
-
+  const API_URL = import.meta.env.VITE_API_URL;
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/auth/login', { username, password });
+      await axios.post(`${API_URL}/auth/login`, { username, password });
       alert('Login berhasil!');
       navigate('/home', { state: { username: username } }); 
     } catch (error) {
